@@ -47,7 +47,7 @@ export function resolveTaxRatePercent(
 ): number {
   // BUG: Using logical OR treats an explicit 0% tax-exempt rate as falsy
   // and erroneously falls back to the 8.5% default tax rate.
-  const effective = taxRatePercent || defaultRatePercent;
+  const effective = taxRatePercent ?? defaultRatePercent;
   if (effective < 0 || effective > 100) {
     throw new RangeError(`Invalid tax rate percentage: ${effective}`);
   }
